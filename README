@@ -1,0 +1,19 @@
+How to build
+============
+1. Install: make DRM_DRIVER_INC_DIR=DRM/DRIVER/include/uapi KERNEL_SRC=path/to/kernel-src/ install
+   Clean:   make clean
+
+How to use
+===========================
+1. Put libvs_bo_helper.so into board directory which is exported as LD_LIBRARY_PATH.
+
+2. For function drm_vs_get_align_size:
+   Get aligned width and height accoring to input format and tile mode/dec/PVRIC tile mode.
+
+3. For function drm_vs_bo_config:
+   Prepare parameters required by DRM_IOCTL_MODE_CREATE_DUMB for each plane.
+
+   Note: in the case of dec, struct drm_vs_bo_param.height represents the virtual height
+   with tile status buffer;
+   In the case of PVRIC, struct drm_vs_bo_param.height represents the virtual height
+   with header section buffer.
