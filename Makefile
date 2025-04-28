@@ -4,7 +4,9 @@ CFLAGS :=  -Wall -Wextra -Werror -fPIC
 CC=$(CROSS_COMPILE)gcc
 AR=$(CROSS_COMPILE)ar
 
-INCS := -I$(DRM_DRIVER_INC_DIR)/  -I$(PWD)/include
+INCS := -I$(PWD)/include
+override INCS := -Wall $(INCS)
+
 vpath %.c src
 SRCS := ${notdir ${wildcard src/*.c}}
 
